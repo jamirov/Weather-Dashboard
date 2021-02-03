@@ -2,9 +2,7 @@ var myKey = "6dffc89cea0871519ae20ba624a3e047";
 
 var city = $('#city');
 
-var citiesObj = {};
-
-var weatherData;
+var cityCount = 0;
 
 $("#search-button").click(function(event){
     event.preventDefault();
@@ -78,31 +76,21 @@ $("#search-button").click(function(event){
 
     });
     
-    var citiesArray = [];
-    
-    citiesArray.push(cityName);
-// console.log(citiesArray);
-    
-    // localStorage.setItem("name",citiesArray);
-    // var savedCity = localStorage.getItem("name");
-
-    // console.log(savedCity);
-    for(i = 0; i < citiesArray.length; i ++ ){
-
+    localStorage.setItem(cityCount,cityName);
     var newLi = $("<li>");
-    newLi.html(citiesArray[i]);
-    $(".history").append(newLi);
-
-    }
-    // console.log(citiesArray);
-
-
+    newLi.html(localStorage.getItem(cityCount));
+    $(".history").append(newLi)
+    cityCount++;
 
 $("#city").val("");
 
 });
 
-
+for (var i = 0; i < localStorage.length; i++){
+    var newLi = $("<li>");
+    newLi.html(localStorage.getItem([i]))
+    $(".history").append(newLi)
+};
 
 
 
